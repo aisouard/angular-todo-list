@@ -1,2 +1,4 @@
-<input type="text" data-qa="new-task-name" [formControl]="taskName" />
-<button data-qa="create-task-button" (click)="handleSubmit()">Create</button>
+<form [formGroup]="form">
+  <input type="text" data-qa="new-task-name" formControlName="name" />
+  <button data-qa="create-task-button" [disabled]="!form.valid" (click)="handleSubmit()">Create</button>
+</form>

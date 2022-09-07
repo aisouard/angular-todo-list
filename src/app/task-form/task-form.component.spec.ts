@@ -26,27 +26,50 @@ describe('TaskFormComponent', () => {
     compiled = fixture.nativeElement as HTMLElement;
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  describe('empty form', () => {
+    let button: HTMLButtonElement;
+    let input: HTMLInputElement;
+
+    beforeEach(() => {
+      button = compiled.querySelector('[data-qa="create-task-button"]')!;
+      input = compiled.querySelector('[data-qa="new-task-name"]')!;
+      expect(input).toBeTruthy();
+    });
+
+    it('renders a button', () => {
+      expect(button).toBeTruthy();
+      expect(button.disabled).toBeTrue();
+    });
+
+    it('renders an input box', () => {
+      expect(input).toBeTruthy();
+    });
   });
 
   describe('clicking the Create button', () => {
+    let button: HTMLButtonElement;
+    let input: HTMLInputElement;
+
     beforeEach(() => {
-      const button: HTMLButtonElement = compiled.querySelector('[data-qa="create-task-button"]')!;
-      const input: HTMLInputElement = compiled.querySelector('[data-qa="new-task-name"]')!;
-      expect(button).toBeTruthy();
-      expect(input).toBeTruthy();
+      button = compiled.querySelector('[data-qa="create-task-button"]')!;
+      input = compiled.querySelector('[data-qa="new-task-name"]')!;
 
       input.value = 'A very simple task';
       input.dispatchEvent(new Event('input'));
       fixture.detectChanges();
 
       button.click();
+      fixture.detectChanges();
     });
 
     it('clears the input contents', () => {
-      const input: HTMLInputElement = compiled.querySelector('[data-qa="new-task-name"]')!;
+      input = compiled.querySelector('[data-qa="new-task-name"]')!;
       expect(input.value).toEqual('');
+    });
+
+    it('disables the button', () => {
+      button = compiled.querySelector('[data-qa="create-task-button"]')!;
+      expect(button.disabled).toBeTrue();
     });
 
     it('emits the `create` event with the task\'s name', () => {

@@ -3,7 +3,11 @@ import {
   EventEmitter,
   Output,
 } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-task-form',
@@ -14,10 +18,12 @@ export class TaskFormComponent {
   @Output()
   create = new EventEmitter<string>();
 
-  taskName = new FormControl('');
+  form = new FormGroup({
+    name: new FormControl('', [Validators.required]),
+  });
 
   handleSubmit() {
-    this.create.emit(this.taskName.value!);
-    this.taskName.reset();
+    this.create.emit(this.form.get('name')?.value!);
+    this.form.reset();
   }
 }
