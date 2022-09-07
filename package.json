@@ -55,6 +55,7 @@
     "babel-loader": "^8.2.5",
     "cypress": "latest",
     "eslint": "~8.18.0",
+    "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-storybook": "^0.6.4",
     "jasmine-core": "~4.3.0",
     "karma": "~6.4.0",

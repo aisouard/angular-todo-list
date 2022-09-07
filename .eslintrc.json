@@ -5,6 +5,9 @@
   ],
   "overrides": [
     {
+      "env": {
+        "cypress/globals": true
+      },
       "files": [
         "*.ts"
       ],
@@ -17,6 +20,7 @@
       "extends": [
         "plugin:@angular-eslint/recommended",
         "plugin:@angular-eslint/template/process-inline-templates",
+        "plugin:cypress/recommended",
         "plugin:storybook/recommended"
       ],
       "rules": {
