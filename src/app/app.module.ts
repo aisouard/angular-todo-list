@@ -5,6 +5,7 @@ import { StoreModule } from '@ngrx/store';
 
 import { AppComponent } from './app.component';
 import { TaskFormComponent } from './task-form/task-form.component';
+import { tasksReducer } from './task/task.reducer';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,7 @@ import { TaskFormComponent } from './task-form/task-form.component';
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({ tasks: tasksReducer }),
   ],
   providers: [],
   bootstrap: [AppComponent],

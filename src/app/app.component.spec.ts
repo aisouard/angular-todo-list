@@ -1,11 +1,23 @@
 import { TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { provideMockStore } from '@ngrx/store/testing';
 import { AppComponent } from './app.component';
+import { TaskFormComponent } from './task-form/task-form.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [
         AppComponent,
+        TaskFormComponent,
+      ],
+      imports: [
+        ReactiveFormsModule,
+      ],
+      providers: [
+        provideMockStore({
+          initialState: { tasks: [] },
+        }),
       ],
     }).compileComponents();
   });
