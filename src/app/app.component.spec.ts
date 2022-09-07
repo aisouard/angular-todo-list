@@ -3,6 +3,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { provideMockStore } from '@ngrx/store/testing';
 import { AppComponent } from './app.component';
 import { TaskFormComponent } from './task-form/task-form.component';
+import { TaskListComponent } from './task-list/task-list.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -10,6 +11,7 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent,
         TaskFormComponent,
+        TaskListComponent,
       ],
       imports: [
         ReactiveFormsModule,

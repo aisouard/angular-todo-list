@@ -1,1 +1,2 @@
 <app-task-form (create)="createTask($event)"></app-task-form>
+<app-task-list data-qa="incomplete-tasks" [tasks]="(incompleteTasks$ | async) || []"></app-task-list>
