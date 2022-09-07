@@ -1,3 +1,4 @@
+import { EventEmitter } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -7,7 +8,7 @@ describe('TaskFormComponent', () => {
   let component: TaskFormComponent;
   let fixture: ComponentFixture<TaskFormComponent>;
   let compiled: HTMLElement;
-  let createSpy: any;
+  let createSpy: jasmine.SpyObj<EventEmitter<string>>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -16,11 +17,11 @@ describe('TaskFormComponent', () => {
     })
       .compileComponents();
 
-    createSpy = jasmine.createSpy('create');
+    createSpy = jasmine.createSpyObj('create', ['emit']);
 
     fixture = TestBed.createComponent(TaskFormComponent);
     component = fixture.componentInstance;
-    component.create.emit = createSpy;
+    component.create = createSpy;
 
     fixture.detectChanges();
     compiled = fixture.nativeElement as HTMLElement;
@@ -73,7 +74,7 @@ describe('TaskFormComponent', () => {
     });
 
     it('emits the `create` event with the task\'s name', () => {
-      expect(createSpy).toHaveBeenCalledOnceWith('A very simple task');
+      expect(createSpy.emit).toHaveBeenCalledOnceWith('A very simple task');
     });
   });
 });
