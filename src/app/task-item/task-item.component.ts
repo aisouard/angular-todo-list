@@ -11,5 +11,11 @@ import { Task } from '../task/task.model';
 })
 export class TaskItemComponent {
   @Input()
+  id = 0;
+
+  @Input()
+  prefix = '';
+
+  @Input()
   task!: Task;
 }

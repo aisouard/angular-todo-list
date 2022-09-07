@@ -11,5 +11,8 @@ import { Task } from '../task/task.model';
 })
 export class TaskListComponent {
   @Input()
+  prefix = '';
+
+  @Input()
   tasks: Task[] = [];
 }
