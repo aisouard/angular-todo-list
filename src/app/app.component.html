@@ -1,2 +1,4 @@
-<app-task-form (create)="createTask($event)"></app-task-form>
-<app-task-list prefix="incomplete-tasks" [tasks]="(incompleteTasks$ | async) || []"></app-task-list>
+<div class="h-full flex flex-col items-center justify-center space-y-2">
+  <app-task-form (create)="createTask($event)"></app-task-form>
+  <app-task-list prefix="incomplete-tasks" [tasks]="(incompleteTasks$ | async) || []"></app-task-list>
+</div>
